@@ -79,25 +79,26 @@ while True:
             clear_screen()
             print(art + menu)
         elif opcao == "8":
-            # Limpa a tela e exibe a arte ASCII e a mensagem de atualização
-            clear_screen()
-            print(art)
-            print("Procurando atualizações...")
-            
-# Loop giratório enquanto procura atualizações
-while True:
-    print("/", end="", flush=True)
-    time.sleep(0.1)
-    print("\b", end="", flush=True)
-
-    # TODO: Inserir código para verificar atualizações no GitHub e atualizar o script
-    # Aqui apenas simulamos uma verificação de atualização
-    if input("Deseja atualizar o script? (s/n) ") == "s":
-        os.system("git pull origin main")
+    # Limpa a tela e exibe a arte ASCII e a mensagem de atualização
+    clear_screen()
+    print(art)
+    print("Procurando atualizações...")
+    
+    # Verifica se há atualizações disponíveis no repositório
+    os.system("git pull --dry-run https://github.com/Slashzinmaker/endsec.git")
+    resposta = input("Deseja atualizar o script? (s/n) ")
+    
+    if resposta == "s":
+        # Faz o download do arquivo atualizado e salva na pasta do script
+        os.system("wget -O endsec.py https://raw.githubusercontent.com/Slashzinmaker/endsec/main/endsec.py")
+        
+        # Limpa a tela e exibe a mensagem de atualização concluída
+        clear_screen()
         print("Script atualizado com sucesso. Reinicie o programa.")
         time.sleep(2)
         break
-
-# Limpa a tela e exibe a arte ASCII e o menu novamente
-clear_screen()
-print(art + menu)
+        
+    else:
+        # Limpa a tela e exibe a arte ASCII e o menu novamente
+        clear_screen()
+        print(art + menu)
