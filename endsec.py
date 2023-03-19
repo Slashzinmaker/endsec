@@ -1,104 +1,186 @@
 import os
-import time
 
-# Função para limpar a tela
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
+# Função para exibir texto em vermelho
+def print_red(text):
+    print("\033[91m {}\033[00m" .format(text))
 
-# Arte ASCII e menu
-art = """
- __   ___  __   __        __        __   __   __  
-|  \ |__  |__) |__) |  | |__)  /\  |  \ /  \ |__) 
-|__/ |___ |  \ |  \ \__/ |__) /~~\ |__/ \__/ |  \ 
-                                                  
- __   ___                                         
-|  \ |__                                          
-|__/ |___                                         
-                                                  
-   __                                             
-| |__)                                            
-| |                                               
-                                                  
- __                                               
-|__) \ / .                                        
-|__)  |  .                                        
-                                                  
- ___       __   __   ___  __                      
-|__  |\ | |  \ /__` |__  /  `                     
-|___ | \| |__/ .__/ |___ \__,                     
-"""
+# Função para exibir texto em verde
+def print_green(text):
+    print("\033[92m {}\033[00m" .format(text))
 
-menu = """
-______________________________________________
-{art}
-| - [ 1 ] Derrubar Ip Net
-----------------------------------
-| - [ 2 ] Derrubar Ip Site
-----------------------------------
-| - [ 3 ] Rastrear Ip
-----------------------------------
-| - [ 4 ] Info Ip
----------------------------------
-| - [ 5 ] ddos Ip Net
----------------------------------
-| - [ 6 ] Sair do Script
----------------------------------
-| - [ 7 ] Instalar Dependências
-______________________________________________
+# Função para exibir texto em azul
+def print_blue(text):
+    print("\033[94m {}\033[00m" .format(text))
 
-------------|
-| - [ # ] => 
--------------|
-"""
+# Limpa a tela
+os.system('cls' if os.name == 'nt' else 'clear')
 
-# Loop principal do programa
-while True:
-    opcao = input("Digite uma opção: ")
-    
-    # Verifica se a opção é sair
-    if opcao == "sair":
-        break
-    
-    # Verifica se a opção é válida
-    if opcao in ["1", "2", "3", "4", "5", "6", "7", "8"]:
-        # Limpa a tela e exibe a arte ASCII e o menu novamente
-        clear_screen()
-        print(art + menu)
+# Instala as dependências
+def instalar_dependencias():
+    print_green("Instalando dependências...")
+    os.system("pkg update -y && pkg upgrade -y && pkg install python git -y && pkg install pip && pip install eduzinweb")
+    print_green("[ * ] Dependências Foram Instaladas com Sucesso")
 
-        # Verifica se o usuário escolheu a opção de sair
-        if opcao == "6":
-            # Sai do loop
-            break
-        elif opcao == "7":
-            # Instala as dependências
-            os.system("pkg update && pkg upgrade")
-            os.system("pkg install pip")
-            os.system("pip install ngrok")
-            os.system("pkg install pip2")
-            input("Dependências instaladas. Pressione Enter para continuar.")
-            clear_screen()
-            print(art + menu)
-        elif opcao == "8":
-    # Limpa a tela e exibe a arte ASCII e a mensagem de atualização
-    clear_screen()
-    print(art)
-    print("Procurando atualizações...")
-    
-    # Verifica se há atualizações disponíveis no repositório
-    os.system("git pull --dry-run https://github.com/Slashzinmaker/endsec.git")
-    resposta = input("Deseja atualizar o script? (s/n) ")
-    
-    if resposta == "s":
-        # Faz o download do arquivo atualizado e salva na pasta do script
-        os.system("wget -O endsec.py https://raw.githubusercontent.com/Slashzinmaker/endsec/main/endsec.py")
-        
-        # Limpa a tela e exibe a mensagem de atualização concluída
-        clear_screen()
-        print("Script atualizado com sucesso. Reinicie o programa.")
-        time.sleep(2)
-        break
-        
+# Exibe a arte ASCII
+print_red("[ * ] By Eduzinweb No Topo")
+print_blue("""
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⡾⠿⠿⠿⠷⣶⣦⣤⣀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⠟⢁⣠⣤⣤⣤⣤⣀⡈⠙⠻⣷⣄⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠁⢾⠿⠟⠛⠉⠉⠛⠛⠿⣷⣦⡈⢻⣧⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠁⠀⣠⠶⠶⢦⣄⠀⢀⣀⣀⡈⠻⣷⠀⢻⣧⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇⠀⢰⠃⣤⠄⠀⠘⡟⠉⠀⠀⠙⣆⠀⠀⠀⣿⡆
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⢠⠘⣆⡀⠀⢀⣼⣇⠀⠘⠃⠀⡼⠀⠀⠀⢸⣧
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡿⠀⠈⠳⠄⠉⠙⡟⠀⡜⠲⠤⠴⢞⡡⠀⠀⠀⢸⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⣠⠒⣉⣒⡀⠀⠳⠾⠁⠀⠀⠉⠉⠀⠀⠀⠀⢸⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠁⡇⢸⣿⣿⣏⡶⢤⣀⢠⣤⣴⣤⣤⡈⠲⡀⠀⢸⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⣸⡏⠀⠱⡌⢻⣿⣿⣿⣿⣿⣿⣋⡙⠻⣿⣿⠀⣷⠀⢸⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⣿⠃⠀⠀⠈⠢⠙⠛⠯⢽⣹⣻⣟⣻⣦⠽⠋⣠⠇⠀⢸⣿
+⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠒⠋⠁⠀⠀⢸⡟
+⠀⠀⠀⠀⠀⠀⠀⢸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡇
+⠀⠀⠀⠀⠀⠀⠀⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠇
+⠀⠀⠀⠀⠀⢀⣾⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠀
+⠀⠀⠀⠀⠀⠘⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣆⠀⢸⣿⠀
+⠀⠀⠀⠀⠀⠀⣿⠗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠀⢸⡿⠀
+⠀⠀⠀⠀⠀⣸⡿⠀⠀⠀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀
+⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⣿⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⠀⠀
+⠀⠀⠀⠀⣾⡏⠀⣠⡶⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⡏⠀⠀
+⠀⠀⠀⣰⡿⠁⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⠃⠀⠀
+⠀⠀⢠⣿⠃⠀⠀⠑⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡟⠀⠀⠀
+⠀⠀⣾⡏⠀⠀⠀⠀⢀⡶⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⣿⠁⠀⠀⠀
+⠀⣸⡿⠀⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀by eduzinweb
+⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⡾⠋⠀⠀⠀⠀versão: 2.38.2
+⣸⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀⠀⠀⠀
+⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢐⡆⠀⠀⣼⡟⠀⠀⠀⠀⠀⠀⠀https://endsec.ogr.br
+⣿⡇⢰⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠁⠀⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀
+⢹⣧⠘⠦⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣠⠇⠀⢀⣾⠟⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠘⣿⡄⢾⡀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠁⣀⣴⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠘⢿⣦⡉⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⣾⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⠙⠻⠷⣶⣶⣶⣶⣶⠿⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+""")
+
+# Exibe o mini menu
+print_green("[ 1 ] Instalar dependências")
+print_red("[ 2 ] Abrir menu")
+print_blue("[ 3 ] Sair")
+
+# Pede a escolha do usuário
+escolha = input("\n[ Escolha a Opção]: ")
+
+# Verifica a escolha do usuário
+if escolha == "1":
+    instalar_dependencias()
+    # Limpa a tela
+    os.system('cls' if os.name == 'nt' else 'clear')
+    # Exibe a arte ASCII
+    print_red("[ * ] By Eduzinweb No Topo")
+    print_blue("""
+    ⠀⠀⣿⠲⠤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+  ⠀⣸⡏⠀⠀⠀⠉⠳⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣿⠀⠀⠀⠀⠀⠀⠀⠉⠲⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢰⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠲⣄⠀⠀⠀⡰⠋⢙⣿⣦⡀⠀⠀⠀⠀⠀
+⠸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣙⣦⣮⣤⡀⣸⣿⣿⣿⣆⠀⠀⠀⠀
+⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⠀⣿⢟⣫⠟⠋⠀⠀⠀⠀
+⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣿⣿⣷⣷⣿⡁⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⢸⣿⣿⣧⣿⣿⣆⠙⢆⡀⠀⠀⠀⠀eduzinweb
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢾⣿⣤⣿⣿⣿⡟⠹⣿⣿⣿⣿⣷⡀⠀⠀no topo de tudo
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣧⣴⣿⣿⣿⣿⠏⢧⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠀⠈⢳⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⠀⠀⠀⢳
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⢀⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠸⣿⣿⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀frase do dia:
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡇⢠⣿⣿⣿⣿⣿⣿⣿⣿⠀se a morte te acompanha voce nao ⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀precisa ter medo de nada.⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣼⢸⣿⣿⣿⣿⣿⣿⣿⣿⠀pois a morte sou eu ⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⢸⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀eu vou te pegar 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠛⠻⠿⣿⣿⣿⡿⠿⠿⠿⠿⠿⢿⣿⣿⠏⠀⠀⠀⠀⠀⠀
+    """)
+    # Exibe o mini menu
+    print_green("[ 1 ] Instalar dependências")
+    print_red("[ 2 ] Abrir menu")
+    print_blue("[ 3 ] Sair")
+
+    # Pede a escolha do usuário novamente
+    escolha = input("\n[ Escolha a Opção]: ")
+
+elif escolha == "2":
+    print_red("Abrindo menu...")
+
+    # Limpa a tela
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Exibe a arte ASCII
+    print_red("[ * ] By Eduzinweb No Topo")
+    print_blue("""
+      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠆⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠴⠋⠀⠀⠀⠀⠀⠀⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢠⠐⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠘⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⠀⠀⡼⠇⠀⠀⠀⠘⡆⠀⠀⠐⠀⠀⠀⢀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠓⠢⢼⠀⠀⠀⠀⠀⠀⠀⠀⣾⠀⠀⠀⠀⣠⠎⠀⠀⠀⠀⠀⠀⠸⡄⠀⠀⠀⠀⠀⠈⣇⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⢠⠇⠀⠀⠀⡰⠃⠀⠀⠀⠀⠀⠀⢀⡼⡇⠀⠀⠀⠀⠀⠀⢸⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⣸⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⢠⠞⠀⢹⡄⠀⠀⠀⠀⠀⠘⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠀⠀⠀⠀⠀⠀⠀⢀⡇⠀⠀⣰⠁⠀⠀⠀⠀⠀⠀⣰⠋⠀⠀⠘⣧⠀⠀⠀⠀⠀⠀⢹⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⣼⠋⠀⠀⠀⠀⠀⠀⠀⡟⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⡴⠃⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⠀⢰⠋⠀⠀⠀⠀⠀⠀⢀⡾⠀⠀⠀⠀⠛⠀⠀⠀⠀⠀⢸⡁⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⢸⡇
+⠀⠀⠀⠀⠀⠀⢠⡏⠀⠀⠀⠀⠀⠀⢀⡞⠁⠀⡿⣯⡷⡴⢦⣤⡠⣶⡶⠀⢷⠀⠀⠀⠀⢰⡇⠀⠀⠀⠀⠀⠀⡾⠀
+⠀⠀⠀⠀⠀⠀⡞⠀⠀⠀⠀⠀⠀⠀⣼⣥⣤⣤⣤⣤⣤⣤⣤⣀⣀⣀⣀⠀⠈⢧⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⢀⡇⠀
+⠀⠀⠀⠀⠀⢸⠁⠀⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠀⠉⠙⠻⢿⣿⣿⣿⣿⣿⣿⠛⢦⠀⠀⢸⡇⠀⠀⠀⠀⠀⢸⡇⠀
+⠀⠀⠀⠀⢠⡏⠀⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⠳⠀⢳⡀⢹⡇⠀⠀⠀⠀⠀⡾⡇⠀
+⠀⠀⠀⠀⡞⠀⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⡿⠘⠀⠀⠹⣼⡇⠀⠀⠀⠀⢠⠇⠀⠀
+⠀⠀⠀⣰⠃⠀⠀⠀⠀⠀⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡿⠁⠀⠀⠀⠀⠘⣇⠀⠀⠀⠀⡾⠀⠀⠀
+⠀⠀⢠⡏⠀⠀⠀⠀⠀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠁⠀⠀⠀⠀⠀⠀⠸⡄⠀⠀⢸⠁⠀⠀⠀
+⠀⠀⡾⠀⠀⠀⠀⠀⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠀⠀⠀⠀⠀⠀⠀⠀⢻⠀⠀⡟⠀⠀⠀⠀
+⠀⣴⠓⣾⣳⣀⢀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡇⠃⠀⠀⠀⠀⠀⠀⢸⡇⢀⠇⠀⠀⠀⠀
+⣾⠃⠀⠀⠀⠑⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠈⡇⢸⠀⠀⠀⠀⠀
+⠹⡀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⣾⠀⠀⠀⠀⠀
+⠀⢳⡄⠀⠀⠀⠀⠘⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡇⣿⠀⠀⠀⠀⠀
+⠀⠀⣷⡄⠀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡞⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠃⡏⠀⠀⠀⠀⠀
+⠀⢀⡇⢹⣄⠀⠀⠀⠀⣀⠉⠓⠶⢄⡀⠀⠀⠀⠀⠀⢀⣠⠴⠋⠣⣄⠀⠀⠀⠀⠀⠀⠀⠀⢠⠟⣸⣧⠀⠀⠀⠀⠀
+⠀⣴⣿⠋⠘⣆⠀⢰⠶⠤⢍⣛⣶⠤⠿⣷⣦⡀⠒⠚⡟⠀⠀⠀⠀⠈⠛⠢⠤⡄⠀⠀⢀⡴⢯⠴⣳⠇⠀⠀⠀⠀⠀
+⠀⠀⠉⠀⠀⠘⢦⡈⠻⣖⠤⣤⣉⣉⣹⣯⣭⠉⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣾⠛⣫⣼⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠑⣄⠉⢦⡀⠀⠀⠈⠉⠁⠀⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⢿⣷⢚⡝⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⢶⣷⠇⠀⠀⠀⠀⠀⣠⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣿⠷⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+    """)
+
+    # Exibe o menu principal
+    print_green("[ 1 ] Derrubar Net")
+    print_red("[ 2 ] Derrubar Site")
+    print_blue("[ 3 ] Derrubar Número")
+    print_green("[ 4 ] Info Ip")
+    print_red("[ 5 ] Formatar Alvo via Ip")
+    print_blue("[ 6 ] Modo Phenyxxz")
+    print_green("[ 7 ] Sair")
+
+    # Pede a escolha do usuário novamente
+    escolha_menu = input("\n[ Escolha a Opção]: ")
+
+    # Verifica a escolha do usuário no menu principal
+    if escolha_menu == "1":
+        print("Opção 1 selecionada!")
+        # Adicione aqui o código para executar a opção 1
+    elif escolha_menu == "2":
+        print("Opção 2 selecionada!")
+        # Adicione aqui o código para executar a opção 2
+    elif escolha_menu == "3":
+        print("Opção 3 selecionada!")
+        # Adicione aqui o código para executar a opção 3
+    elif escolha_menu == "4":
+        print("Opção 4 selecionada!")
+        # Adicione aqui o código para executar a opção 4
+    elif escolha_menu == "5":
+        print("Opção 5 selecionada!")
+        # Adicione aqui o código para executar a opção 5
+    elif escolha_menu == "6":
+        print("Opção 6 selecionada!")
+        # Adicione aqui o código para executar a opção 6
+    elif escolha_menu == "7":
+        print_blue("Saindo...")
+        # Adicione aqui o código para sair
     else:
-        # Limpa a tela e exibe a arte ASCII e o menu novamente
-        clear_screen()
-        print(art + menu)
+        print_red("Opção inválida!")
