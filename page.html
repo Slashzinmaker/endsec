@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Página de Empréstimo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Empresa de Empréstimo XYZ</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Início</a></li>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Tipos de Empréstimo</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="hero">
+      <h2>Obtenha o empréstimo que você precisa hoje!</h2>
+      <p>Preencha o formulário abaixo para solicitar um empréstimo.</p>
+      <form>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="amount">Valor do Empréstimo:</label>
+        <input type="number" id="amount" name="amount" required>
+        
+        <label for="term">Prazo de Pagamento:</label>
+        <select id="term" name="term" required>
+          <option value="">Selecione o prazo</option>
+          <option value="12">12 meses</option>
+          <option value="24">24 meses</option>
+          <option value="36">36 meses</option>
+        </select>
+        
+        <input type="submit" value="Solicitar Empréstimo">
+      </form>
+    </section>
+    
+    <section id="features">
+      <h2>Por que escolher a Empresa de Empréstimo XYZ?</h2>
+      <ul>
+        <li>Taxas competitivas de juros</li>
+        <li>Processo de aprovação rápido e fácil</li>
+        <li>Atendimento ao cliente de alta qualidade</li>
+        <li>Opções flexíveis de pagamento</li>
+      </ul>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2023 Empresa de Empréstimo XYZ. Todos os direitos reservados.</p>
+  </footer>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: #223c5a;
+      color: #fff;
+      padding: 20px;
+    }
+    
+    nav {
+      float: right;
+    }
+    
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      display: inline-block;
+      margin-left: 20px;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+    }
+    
+    main {
+      padding: 40px;
+    }
+    
+    #hero {
+      background-image: url('https://via.placeholder.com/800x400');
+      background-position: center;
+      background-size: cover;
+      color: #fff;
+      padding: 80px 0;
+     
+}
+
+#hero h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+#hero p {
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+form input,
+form select {
+  display: block;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+}
+
+form input[type="submit"] {
+  background-color: #223c5a;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+form input[type="submit"]:hover {
+  background-color: #1c324c;
+}
+
+#features {
+  background-color: #f2f2f2;
+  padding: 40px;
+  text-align: center;
+}
+
+#features h2 {
+  margin-bottom: 40px;
+}
+
+#features ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#features li {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+footer {
+  background-color: #223c5a;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+</style>
+</body>
+</html>
